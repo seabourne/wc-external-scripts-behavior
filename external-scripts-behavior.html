@@ -1,0 +1,41 @@
+<script>
+ (function(ApplicationBehaviors) {
+   ApplicationBehaviors.ExternalScriptsBehavior = {
+     properties: {
+         externalLoaded: Boolean,
+         externalCSS: Array,
+         externalJS: Array
+     },
+     ready: function() {
+         let expected = this.externalJS.length + this.externalCSS.length
+         let count = 0
+         let done = () => {
+             count++
+             if (count >= expected) this.set('externalLoaded', true)
+         }
+         this.externalJS.map((x) => {this._loadJS(x, done)})
+         this.externalCSS.map((x) => {this._loadCSS(x, done)})
+     },
+     _loadCSS: function(href, onload, onerror, optAsync) {
+         var ele = document.createElement('link')
+         ele.href = href
+         ele.rel = 'stylesheet'
+         ele.async = optAsync
+         if (onload) ele.onload = onload
+         if (onerror) ele.onerror = onerror
+         document.body.appendChild(ele)
+         return ele
+     },
+     _loadJS: function(src, onload, onerror, optAsync) {
+         var ele = document.createElement('script')
+         ele.src = src
+         ele.async = optAsync
+         if (onload) ele.onload = onload
+         if (onerror) ele.onerror = onerror
+         document.body.appendChild(ele)
+         return ele
+     }
+   }
+ })(window.ApplicationBehaviors = window.ApplicationBehaviors || {})
+
+</script>

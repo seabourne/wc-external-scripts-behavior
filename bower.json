@@ -1,0 +1,27 @@
+{
+  "name": "wc-external-scripts-behavior",
+  "main": "external-scripts-behavior.html",
+  "version": "0.0.1",
+  "homepage": "https://github.com/seabourne/wc-external-scripts-behavior",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seabourne/wc-external-scripts-behavior.git"
+  },
+  "authors": [
+    "Luke Opperman <luke@seabourneconsulting.com>"
+  ],
+  "description": "External Script loading polymer behavior",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.11",
+  }
+}
